@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body onload="ShowTime()">
+<div id="abc"></div>
+選擇日期:<input type="date" id="myDate"><br>
+hour:<input type="text" id="hour" style="text-align:right" size="2">
+minute:<input type="text" id="min" style="text-align:right" size="2">
+<button onclick="myFunction()">預約</button>
+<p id="demo"></p><br>
+<p id="demoz"></p>
+<script>
+var string="時間到瞜!"
+
+function ShowTime()
+{
+	var date = new Date()
+	var hhh = new Date()
+	var year = date.getFullYear()
+	var month = date.getMonth()+1
+	var day = date.getDate()
+	var h=date.getHours()
+	var m=date.getMinutes()
+	var s=date.getSeconds()
+	var x = document.getElementById("myDate").value;
+	var t=new Date(year,month-1,day)
+	var xx = new Date(x)
+	var E=(((xx-t)/(1000*60*60))-8)
+    document.getElementById('abc').innerHTML =year+"-"+month+"-"+day+" "+h+":"+m+":"+s+"::::"+E;
+		if((E==0)&&(h==0)&&(m==0)&&(s==0))
+		{
+			alert(string)
+		}
+		setTimeout('ShowTime()', 1000);
+}
+function myFunction() {
+	var x = document.getElementById("myDate").value;
+	var y = document.getElementById("hour").value;
+	var z = document.getElementById("min").value;
+    document.getElementById("demo").innerHTML = x;
+	document.getElementById("demoz").innerHTML =y+":"+z;
+	var xx = new Date(x)
+	return xx;
+}
+
+</script>
+
+</body>
+</html>
