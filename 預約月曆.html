@@ -1,0 +1,90 @@
+
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>預約時間</title>
+<script>
+var string="時間到瞜!"
+var syear=0
+var shour=0
+var sminute=0
+function ShowTime()
+{
+	var date = new Date()
+	var year = date.getFullYear()
+	var month = date.getMonth()+1
+	var day = date.getDate()
+	var h=date.getHours()
+	var m=date.getMinutes()
+	var s=date.getSeconds()
+	var t=new Date(year,month-1,day)
+	var x = document.getElementById("yy").value;
+	var xx=new Date(x)
+	var E=(((xx-t)/(1000*60*60))-8)
+    document.getElementById('abc').innerHTML =year+"/"+month+"/"+day+" "+h+":"+m+":"+s;
+		if((E==0)&&(h==shour)&&(m==sminute)&&(s==0))
+			alert(string)
+			setTimeout('ShowTime()', 1000);
+}
+function setup()
+{
+			if(document.setform.setyear.value=="")
+			alert("請選擇日期")
+		else if ((document.setform.setmonth.value<0) || (document.setform.setmonth.value>23))
+			alert("hour設定超出範圍")
+		else if ((document.setform.setdate.value<0) || (document.setform.setdate.value>59))
+			alert("minute設定超出範圍")
+		else 
+			{
+				var x = document.getElementById("yy").value;
+				if (document.setform.setmonth.value!="")
+				shour=document.setform.setmonth.value
+				if (document.setform.setdate.value!="")
+				sminute=document.setform.setdate.value
+				document.setform.atime.value =x+" "+shour+":"+sminute;
+			}
+			var x = document.getElementById("yy").value;
+			var xx = new Date(x)
+			return xx;
+}
+function setmessage()
+{
+	if (document.setform.message.value!="")
+    string=document.setform.message.value
+}
+
+</script>
+	<style type="text/css">
+	body {
+	background-image: url(AA.jpg);
+}
+    </style>
+<body onload="ShowTime()">
+
+<div align="left">
+<font align='left'><a href="index.html" target="_self"><img SRC="home.png" WIDTH="100"HEIGHT="100"></a></font><br>
+	
+		<font size="5"><a href="self.html" target="_self">自我介紹</a></font>
+        <br>
+		<font size="5"><a href="interest.html" target="_self">個人經歷</a></font>
+		<br>
+		<font size="5"><a href="idol.html" target="_self">小目標</a></font>
+        <br><font size="5"><a href="預約月曆.html" target="_self">網頁試做</a></font>
+        
+	</div>
+    <H1 style="top:50px;right:850px;position:absolute;align="center"><font size="16">網頁試做</font></H1><br><br><br><br><br>
+<div style="top:300px;right:650px;position:absolute;width:600px; margin-right:auto; margin-left:auto;">
+	
+    <form method="post" name="setform">
+      <p><font size="5">預約日期
+      <input type="text" name="atime"id="zxc" size="12"style="text-align:right position:absolute;font-size:18px"  align='center' onFocus="blur()"><br><br>
+      設定預約日期:
+      <input type="date" name="setyear"id="yy" size="2" style="text-align:right position:absolute;font-size:18px" align='center'>
+        <input type="text" name="setmonth" id="mm" style="text-align:right position:absolute;font-size:18px" align='center' size="2"  value>
+        時
+        <input type="text" name="setdate" id="dd" style="text-align:right position:absolute;font-size:18px" align='center' size="2"  value>分
+        <input name="按鈕" type="button" style="text-align:right position:absolute;font-size:18px" onClick="setup(),addOption(theList,zxc.value,zxc.value)" value="預約" align='center'><br><br>
+      設定訊息 :   	<input type="text" name="message" size="30" style="text-align:right position:absolute;font-size:18px" align='center' onChange="setmessage()"><br></div>
+<div id="abc" style="left: 1709px; top: 34px; position: absolute; font-size: 24px"></div>
+</html>
+
+
